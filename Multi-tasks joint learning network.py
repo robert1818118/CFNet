@@ -82,13 +82,19 @@ def Enhance_Net(eps = 1.1e-5):
 
     x_c = Concatenate()([x_l, x_g])
 
-    x_l = Dense(units=512, activation=relu)(x_l)
-    x_g = Dense(units=512, activation=relu)(x_g)
-    x_c = Dense(units=1024, activation=relu)(x_c)
-
     x_l = Dense(units=1024, activation=relu)(x_l)
     x_g = Dense(units=1024, activation=relu)(x_g)
-    x_c = Dense(units=2048, activation=relu)(x_c)
+
+    share_1 = Dense(units=2048, activation=relu)
+    share_2 = Dense(units=2048, activation=relu)
+
+    x_l = share_1(x_l)
+    x_g = share_1(x_g)
+    x_c = share_1(x_c)
+
+    x_l = share_2(x_l)
+    x_g = share_2(x_g)
+    x_c = share_2(x_c)
 
     out_l = Dense(units=7, activation=softmax)(x_l)
     out_g = Dense(units=7, activation=softmax)(x_g)
@@ -97,6 +103,3 @@ def Enhance_Net(eps = 1.1e-5):
     model = Model(input, [out_l, out_g, out_c])
 
     return model
-
-# model = Enhance_Net()
-# model.summary()
