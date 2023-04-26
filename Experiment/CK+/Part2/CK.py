@@ -57,7 +57,7 @@ if __name__ == '__main__':
 
         model.fit(x=[x_l_tr_ck, x_g_tr_ck, x_c_tr_ck], y=label_tr,
                   batch_size=32,
-                  epochs=3000,
+                  epochs=2000,
                   verbose=2,
                   callbacks=[checkpoint, reduce_lr],
                   validation_split=0.2)
