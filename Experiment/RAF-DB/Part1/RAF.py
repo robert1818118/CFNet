@@ -92,12 +92,11 @@ print('########## fit processing ##########')
 
 model.fit(x=x_train, y=[y_train, y_train, y_train],
           batch_size=32,
-          epochs=200,
+          epochs=2000,
           verbose=1,
           shuffle=True,
           callbacks=[checkpoint, reduce_lr],
-          validation_data=(x_test, [y_test, y_test, y_test]))
-          # validation_split=0.2)
+          validation_split=0.2)
 
 print('########## predict pocessing ##########')
 
