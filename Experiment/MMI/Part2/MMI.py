@@ -57,11 +57,10 @@ if __name__ == '__main__':
 
         model.fit(x=[x_l_tr_mmi, x_g_tr_mmi, x_c_tr_mmi], y=label_tr,
                   batch_size=32,
-                  epochs=3000,
+                  epochs=2000,
                   verbose=1,
                   callbacks=[checkpoint, reduce_lr],
-                  validation_data=([x_l_te_mmi, x_g_te_mmi, x_c_te_mmi], label_te))
-                  # validation_split=0.2)
+                  validation_split=0.2)
 
         model = load_model(filepath=file_path)
 
