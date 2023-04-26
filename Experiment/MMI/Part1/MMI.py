@@ -92,27 +92,26 @@ if __name__ == '__main__':
 
         file_path = './weights/best_weights_mmi_{}.h5'.format(i + 1)
         # file_path = './best_weights_mmi_{}.h5'.format(i + 1)
-        # reduce_lr = ReduceLROnPlateau(monitor='val_dense_8_acc',
-        #                               factor=0.1,
-        #                               patience=200,
-        #                               verbose=1,
-        #                               mode='auto',
-        #                               min_delta=0.0001,
-        #                               min_lr=0)
-        # checkpoint = ModelCheckpoint(filepath=file_path,
-        #                              monitor='val_dense_8_acc',
-        #                              verbose=1,
-        #                              save_best_only=True,
-        #                              save_weights_only=True,
-        #                              mode='auto')
-        #
-        # model.fit(x=x_tr, y=[y_tr, y_tr, y_tr],
-        #           batch_size=32,
-        #           epochs=2000,
-        #           verbose=1,
-        #           callbacks=[reduce_lr, checkpoint],
-        #           # validation_split=0.2)
-        #           validation_data=(x_te, [y_te, y_te, y_te]))
+        reduce_lr = ReduceLROnPlateau(monitor='val_dense_8_acc',
+                                      factor=0.1,
+                                      patience=200,
+                                      verbose=1,
+                                      mode='auto',
+                                      min_delta=0.0001,
+                                      min_lr=0)
+        checkpoint = ModelCheckpoint(filepath=file_path,
+                                     monitor='val_dense_8_acc',
+                                     verbose=1,
+                                     save_best_only=True,
+                                     save_weights_only=True,
+                                     mode='auto')
+        
+        model.fit(x=x_tr, y=[y_tr, y_tr, y_tr],
+                  batch_size=32,
+                  epochs=2000,
+                  verbose=1,
+                  callbacks=[reduce_lr, checkpoint],
+                  validation_split=0.2)
 
         model.load_weights('./weights/best_weights_mmi_{}.h5'.format(i + 1))
         model_pred = Model(inputs=model.input, outputs=[model.get_layer('dense_3').output, model.get_layer('dense_4').output, model.get_layer('dense_5').output])
