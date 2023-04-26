@@ -4,7 +4,7 @@ Include the muti-task joint learning network and the constraint fusion
 Here you can learn a lot about CFNet, including the code of the multi-tasking joint learning network, code of the constraint fusion network, and more.
 If you have any questions please contact us via Github.
 
-For the code: multitask joint learning and constraint fusion are trained separately. Part 1 contains multitask joint learning, which yields the corresponding three (global, local, and direct fusion) features. Part 2 contains constraint fusion, which requires the output from Part 1 as its input. The code for the experiments has been categorized according to the dataset. Notably, the code of the experiment is classified according to the dataset, which means that different datasets correspond to different code files.
+For the code: We used Python 3.8, tensorflow 2.0 to complete the programming of CFNet. The multi-task joint learning and constraint fusion are trained separately. Part 1 contains multi-task joint learning, which yields the corresponding three (global, local, and direct fusion) features. Part 2 contains constraint fusion, which requires the output from Part 1 as its input. The code for the experiments has been categorized according to the dataset. Notably, the code of the experiment is classified according to the dataset, which means that different datasets correspond to different code files.
 
 For data set acquisition, please refer to the following literature:
 
