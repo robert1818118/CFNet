@@ -110,18 +110,18 @@ y_true = np.argmax(y_test, axis=1)
 print(accuracy_score(y_true=y_true, y_pred=y_pred))
 
 
-# model.load_weights(filepath=file_path)
-# model_pred = Model(inputs=model.input, outputs=[model.get_layer('dense_3').output, model.get_layer('dense_4').output, model.get_layer('dense_5').output])
-# x_l_tr_raf, x_g_tr_raf, x_c_tr_raf = model_pred.predict(x=x_train, batch_size=32, verbose=1)
-# model_pred = Model(inputs=model.input, outputs=[model.get_layer('dense_3').output, model.get_layer('dense_4').output, model.get_layer('dense_5').output])
-# x_l_te_raf, x_g_te_raf, x_c_te_raf = model_pred.predict(x=x_test, batch_size=32, verbose=1)
-#
-# with h5py.File('./raf_sample_label.h5', 'w') as f:
-#     f.create_dataset(name='x_l_tr_raf', data=x_l_tr_raf)
-#     f.create_dataset(name='x_g_tr_raf', data=x_g_tr_raf)
-#     f.create_dataset(name='x_c_tr_raf', data=x_c_tr_raf)
-#     f.create_dataset(name='x_l_te_raf', data=x_l_te_raf)
-#     f.create_dataset(name='x_g_te_raf', data=x_g_te_raf)
-#     f.create_dataset(name='x_c_te_raf', data=x_c_te_raf)
-#     f.create_dataset(name='label_tr', data=y_train)
-#     f.create_dataset(name='label_te', data=y_test)
+model.load_weights(filepath=file_path)
+model_pred = Model(inputs=model.input, outputs=[model.get_layer('dense_3').output, model.get_layer('dense_4').output, model.get_layer('dense_5').output])
+x_l_tr_raf, x_g_tr_raf, x_c_tr_raf = model_pred.predict(x=x_train, batch_size=32, verbose=1)
+model_pred = Model(inputs=model.input, outputs=[model.get_layer('dense_3').output, model.get_layer('dense_4').output, model.get_layer('dense_5').output])
+x_l_te_raf, x_g_te_raf, x_c_te_raf = model_pred.predict(x=x_test, batch_size=32, verbose=1)
+
+with h5py.File('./raf_sample_label.h5', 'w') as f:
+    f.create_dataset(name='x_l_tr_raf', data=x_l_tr_raf)
+    f.create_dataset(name='x_g_tr_raf', data=x_g_tr_raf)
+    f.create_dataset(name='x_c_tr_raf', data=x_c_tr_raf)
+    f.create_dataset(name='x_l_te_raf', data=x_l_te_raf)
+    f.create_dataset(name='x_g_te_raf', data=x_g_te_raf)
+    f.create_dataset(name='x_c_te_raf', data=x_c_te_raf)
+    f.create_dataset(name='label_tr', data=y_train)
+    f.create_dataset(name='label_te', data=y_test)
